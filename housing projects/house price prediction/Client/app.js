@@ -36,7 +36,12 @@ function onClickedEstimatePrice() {
       location: location.value
   },function(data, status) {
       console.log(data.estimated_price);
-      estPrice.innerHTML = "<h2>" + data.estimated_price.toString() + " Lakh</h2>";
+      if(data.estimated_price >= 100)
+      {
+        estPrice.innerHTML = "<h2>" + (data.estimated_price/100).toString() + " Crore</h2>";
+      }
+      else
+        estPrice.innerHTML = "<h2>" + data.estimated_price.toString() + " Lakh</h2>";
       console.log(status);
   });
 }
